@@ -1,0 +1,76 @@
+ISTRUZIONI PONZIO
+
+Per creare un mondo per ponzio e metterlo in difficoltà con piattaforme semoventi, arance cattive e sfondo nero che non da riferimenti bisogna conoscere come usare l'editor:
+
+Ponzium--->Progetto1 (gioco)
+Editor--->Progetto3
+
+1)Appena aperto l'editor, il programma crea un file map.dat, o, se già esistente nella cartella principale, apre il file map.dat presente.
+
+2)Una volta usciti dal programma il contenuto creato sovrascriverà qualsiasi dato sia stato salvato precedentemente in map.dat, se si vuole quindi evitare di perdere i dati di una mappa è bene cambiarle nome cosicchè non possa essere aperta dall'editor ed erroneamente alterata o cancellata.
+
+3)In ogni mappa deve esserci Ponzio, altrimenti il gioco non parte.
+
+4)Ogni volta che Ponzio cade al di sotto della parte bassa della schermata di gioco esso diventa invisibile, entra nella barra di start e ti chiude il gioco perchè l'hai fatto incazzare; hai perso.
+   PRO TIP: Creando una mappa evita di     posizionare Ponzio in un punto senza    piattaforme sotto.
+
+5)Sbizzarrisciti nella creazione della mappa, ricordandoti di impostare la velocità di ogni blocco che vuoi che si muova.
+
+6)I blocchi viola non si vedono nel gioco, servono a fare da fine corsa (muro invisibile) per qualsiasi altro oggetto che si muova, tranne Ponzio.
+
+7)Cliccando su progetto1 il gioco parte e carica la mappa dal file map.dat presente nella cartella del lo stesso file progetto1.exe
+
+8)Nella modalità due giocatori la telecamera segue il giocatore 1, basta far incazzare un Ponzio per far terminare il gioco.
+
+9)COMANDI EDITOR:
+
+  SPOSTAMENTO
+
+  --Frecce sx-dx: spostamento lungo la mappa;
+  --Tasto i: spostamento a inizio mappa;
+  --Tasto f: spostamento a fine mappa;
+  --Tasto s+numero: spostamento della mappa;                                (divisa in 10 parti)
+
+  SCELTA OGGETTI
+
+  --Rotellina mouse: scorrimento oggetti;
+  --Tasto b+numero: scelta oggetti;
+
+  DISEGNO
+
+  --Tasto sx mouse: posiziona oggetto;
+    (tieni premuto per posizionarne molti)
+  --Tasto dx mouse: cancella oggetto;
+
+  VELOCITA'
+
+  --Tasto v+ctrl(sx): modalità velocità:
+      IN MOD VELOCITA'
+      --Tasto su: aumenta velocità;
+      --Tasto giù: diminuisci velocità;
+      --Tasto invio: conferma e esci dalla modalità.
+
+  --Tasto v: assegna vel salvata nella modalità vel;
+  --Tasto v+shift(sx): visualizza velocità del blocco                               selezionato e valore testacoda;
+  --Tasto v-shift(dx): togli la visualizzazione;
+
+  ALTRO
+
+  --Tasto esc: esci e salva la mappa;
+
+10) COMANDI PONZIUM:
+
+   Tasto esc: esci;
+   Tasto w+s: crea secondo giocatore;
+
+   GIOCATORE 1:
+   --Tasto dx/sx: muovi Ponzio;
+   --Tasto su: salta;
+
+   GIOCATORE 2:   
+   --Tasto a/d: muovi Ponzio;
+   --Tasto w: salta;
+
+11) CREATORE: Flavio Martinelli. Diffidare dalle                              imitazioni, solo io conosco i                                   comandi segreti.
+
+Maggio 2012.

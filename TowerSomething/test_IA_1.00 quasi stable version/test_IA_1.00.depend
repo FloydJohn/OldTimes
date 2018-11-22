@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1358517599 source:c:\users\flavio\desktop\tower something\test_ia_1.00\main.cpp
+	<allegro.h>
+	<math.h>
+

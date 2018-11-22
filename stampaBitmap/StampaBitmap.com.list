@@ -1,0 +1,154 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+StampaBitmap.com -- emu8086 assembler version: 4.08  
+ 
+[ 22/05/2013  --  11.43.57 ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       ;Racheli Alessandro
+[   2]        :                                       
+[   3]        :                                       include emu8086.inc
+[   4]        :                                       include lib.inc
+[   5]        :                                       
+[   6]        :                                       org  100h
+[   7]        :                                       
+[   8]    0100: 50 B0 13 B4 00 CD 10 58               graphic_mode
+[   9]        :                                       
+[  10]    0108: 52 B0 00 B4 3D BA AE 01 CD 21 5A 8B   open_file BX, filename
+                D8                                  
+[  11]        :                                       
+[  12]    0115: B8 01 00                              MOV AX, 1
+[  13]        :                                       
+[  14]    0118: B9 00 10                              MOV CX, 1000h
+[  15]        :                                       
+[  16]    011B:                                       leggi:
+[  17]        :                                       
+[  18]    011B: 3D 01 00                              CMP AX, 1
+[  19]        :                                       
+[  20]    011E: 75 16                                 JNE cont
+[  21]        :                                       
+[  22]    0120: 53 51 52 8B D1 8B DB B9 01 00 B4 3F   read_file BX, CX, 1, AX
+                CD 21 5A 59 5B 8B C0                
+[  23]        :                                       
+[  24]    0133: 41                                    INC CX
+[  25]        :                                       
+[  26]    0134: EB E5                                 JMP leggi
+[  27]        :                                       
+[  28]    0136:                                       cont:
+[  29]        :                                       
+[  30]        :                                       ;Salvo start, height, width
+[  31]        :                                       
+[  32]    0136: BB 0A 10                              MOV BX, 100AH
+[  33]        :                                       
+[  34]    0139: 8B 0F                                 MOV CX, [BX]
+[  35]        :                                       
+[  36]    013B: 89 0E BE 01                           MOV bmp_start, CX
+[  37]        :                                       
+[  38]        :                                       
+[  39]        :                                       
+[  40]    013F: BB 12 10                              MOV BX, 1012H
+[  41]        :                                       
+[  42]    0142: 8B 0F                                 MOV CX, [BX]
+[  43]    0144: 8B 57 04                              MOV DX, [BX+4]
+[  44]        :                                       
+[  45]    0147: 89 0E BA 01                           MOV bmp_width, CX
+[  46]    014B: 89 16 B6 01                           MOV bmp_height, DX
+[  47]        :                                       
+[  48]        :                                       
+[  49]    014F: 8B 1E BE 01                           MOV BX, bmp_start
+[  50]        :                                       
+[  51]    0153: 81 C3 00 10                           ADD BX, 1000h
+[  52]        :                                       
+[  53]    0157: B9 00 00                              MOV CX, 0
+[  54]        :                                       
+[  55]    015A: 83 EA 01                              SUB DX, 1
+[  56]        :                                       
+[  57]    015D:                                       INIZIO:
+[  58]        :                                       
+[  59]    015D: 8A 07                                 MOV AL, [BX]
+[  60]        :                                       
+[  61]    015F:                                       CONTINUA:
+[  62]        :                                       
+[  63]    015F: 3C 80                                 CMP AL, 10000000b ;Il pixel in questione e' bianco?
+[  64]        :                                       
+[  65]    0161: 72 10                                 JB LAB1          ;Se si, vado avanti e non stampo niente
+[  66]        :                                       
+[  67]    0163: 50 51 52 B4 0C 8B C9 8B D2 B0 0F CD   color_pixel DX, CX, 0Fh ;Altrimenti stampo un pixel bianco
+                10 5A 59 58                         
+[  68]        :                                       
+[  69]    0173:                                       LAB1:
+[  70]        :                                       
+[  71]    0173: D0 E0                                 SHL AL, 1  ;Ora leggo il BIT successivo
+[  72]        :                                       
+[  73]    0175: 41                                    INC CX   ;Aumento la mia posizione sulla colonna
+[  74]        :                                       
+[  75]    0176: FE 06 C1 01                           INC i2  ;Aumento il conto dei bit gia' letti in questa locazione
+[  76]        :                                       
+[  77]    017A: 80 3E C1 01 08                        CMP i2, 8  ;Ne ho gia' letti 8 ?
+[  78]        :                                       
+[  79]    017F: 74 23                                 JE leggi_nuovo ;Se si, allora ne carico altri 8
+[  80]        :                                       
+[  81]    0181:                                       ret_leggi_nuovo:
+[  82]        :                                       
+[  83]    0181: 3B 0E BA 01                           CMP CX, bmp_width ;Bona, ora sono arrivato alla fine di sta cazzo di riga o no?
+[  84]        :                                       
+[  85]    0185: 75 D8                                 JNE CONTINUA ;No? Allora altro pixel!
+[  86]        :                                       
+[  87]        :                                       ;Ho finito la riga! E ora?
+[  88]        :                                       
+[  89]    0187: 33 C9                                 XOR CX, CX ;Azzeriamo la colonna...
+[  90]        :                                       
+[  91]        :                                       ;Per adesso non ho implementato dimensioni diverse da multipli di 4, lo faro'!
+[  92]        :                                       
+[  93]    0189: 83 FA 00                              CMP DX, 0 ;Ho finito anche le righe?
+[  94]        :                                       
+[  95]    018C: 74 03                                 JE fine ;Ho finito!
+[  96]        :                                       
+[  97]    018E: 4A                                    DEC DX ;Non ho finito, saliamo di una riga...
+[  98]        :                                       
+[  99]    018F: EB CE                                 JMP CONTINUA ;Continuiamo!
+[ 100]        :                                       
+[ 101]    0191:                                       fine:
+[ 102]        :                                       
+[ 103]    0191: 51 8A EC B4 01 CD 21 8A E5 59         get_ch
+[ 104]        :                                       
+[ 105]    019B: 50 B0 03 B4 00 CD 10 58               text_mode
+[ 106]        :                                       
+[ 107]    01A3: C3                                    RET
+[ 108]        :                                       
+[ 109]        :                                       
+[ 110]    01A4:                                       leggi_nuovo:;Ho finito di stampare gli 8 bit identificati dalla cella di memoria
+[ 111]        :                                       
+[ 112]    01A4: 43                                    INC BX ;Leggo nella posizione successiva
+[ 113]        :                                       
+[ 114]    01A5: 8A 07                                 MOV AL, [BX] ;Carico altri 8 bit in AL
+[ 115]        :                                       
+[ 116]    01A7: C6 06 C1 01 00                        MOV i2, 0    ;Azzero il contatore di bit
+[ 117]        :                                       
+[ 118]    01AC: EB D3                                 JMP ret_leggi_nuovo          ;Sono pronto per stampare altri 8 bit
+[ 119]        :                                       
+[ 120]        :                                       
+[ 121]        :                                       
+[ 122]        :                                       
+[ 123]    01AE: 69 6D 67 2E 62 6D 70 00               filename db "img.bmp",0
+[ 124]        :                                       
+[ 125]    01B6: 00 00 00 00                           bmp_height DD ?
+[ 126]    01BA: 00 00 00 00                           bmp_width DD ?
+[ 127]    01BE: 00 00                                 bmp_start DW ?
+[ 128]        :                                       
+[ 129]    01C0: 00                                    i DB 0 ;counter
+[ 130]    01C1: 00                                    i2 DB 0;2o counter
+[ 131]        :                                       
+[ 132]        :                                       
+[ 133]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

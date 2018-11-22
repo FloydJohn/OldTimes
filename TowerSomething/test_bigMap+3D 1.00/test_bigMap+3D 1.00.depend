@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1358882717 source:c:\users\flavio\desktop\tower something\test_bigmap+3d 1.00\main.cpp
+	<allegro.h>
+	<math.h>
+

@@ -1,0 +1,22 @@
+< THE SYMBOL TABLE >  StampaBitmap.com  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+LEGGI                    	0011B     	-1        	LABEL     	(NOSEG)   
+CONT                     	00136     	-1        	LABEL     	(NOSEG)   
+INIZIO                   	0015D     	-1        	LABEL     	(NOSEG)   
+CONTINUA                 	0015F     	-1        	LABEL     	(NOSEG)   
+LAB1                     	00173     	-1        	LABEL     	(NOSEG)   
+RET_LEGGI_NUOVO          	00181     	-1        	LABEL     	(NOSEG)   
+FINE                     	00191     	-1        	LABEL     	(NOSEG)   
+LEGGI_NUOVO              	001A4     	-1        	LABEL     	(NOSEG)   
+FILENAME                 	001AE     	1         	VAR       	(NOSEG)   
+BMP_HEIGHT               	001B6     	2         	VAR       	(NOSEG)   
+BMP_WIDTH                	001BA     	2         	VAR       	(NOSEG)   
+BMP_START                	001BE     	2         	VAR       	(NOSEG)   
+I                        	001C0     	1         	VAR       	(NOSEG)   
+I2                       	001C1     	1         	VAR       	(NOSEG)   
+===================================================================================================
+[ 22/05/2013  --  11.43.57 ] 
+< END >
+ 
